@@ -1,6 +1,7 @@
 package org.launchcode.techjobs_oo;
 
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class Job {
 
@@ -34,27 +35,17 @@ public class Job {
 
     @Override
     public String toString() {
-//        String[] jobValues= {employer.getValue(), location.getValue(), positionType.getValue(), coreCompetency.getValue()};
-//        boolean jobValuesIsAllNull = true;
-//        for (String value : jobValues) {
-//            if (value != null) {
-//                jobValuesIsAllNull = false;
-//                break;
-//            }
-//        }
-//        if (jobValuesIsAllNull) {
-//            return "OOPS! This job does not seem to exist.";
-//        } else {
-            return "\n" +
+        boolean allNull = Stream.of(name, employer, location, positionType, coreCompetency).allMatch(Objects::isNull);
+
+        return allNull ? "OOPS! This job does not seem to exist." :
+         "\n" +
                     "ID: " + id + "\n" +
                     "Name: " + (name == null ? "Data not available" : name) + "\n" +
                     "Employer: " + (employer.getValue() == null ? "Data not available" : employer.getValue()) + "\n" +
                     "Location: " + (location.getValue() == null ? "Data not available" : location.getValue()) + "\n" +
                     "Position Type: " + (positionType.getValue() == null ? "Data not available" : positionType.getValue()) + "\n" +
                     "Core Competency: " + (coreCompetency.getValue() == null ? "Data not available" : coreCompetency.getValue());
-//       }
     }
-
 
     //  Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.

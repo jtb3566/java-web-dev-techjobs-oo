@@ -1,6 +1,7 @@
 package org.launchcode.techjobs_oo.Tests;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 
@@ -32,7 +33,7 @@ public class JobTest {
     @Test //each job object made with full constructor should contain all 6 fields with correct data types
     public void testJobConstructorSetsAllFields () {
         // test values
-        assertEquals(3, testJob3.getId());
+        assertEquals(testJob2.getId() + 1, testJob3.getId());
         assertEquals("Product tester", testJob3.getName());
         assertEquals("ACME", testJob3.getEmployer().getValue());
         assertEquals("Desert", testJob3.getLocation().getValue());
@@ -74,7 +75,6 @@ public class JobTest {
                 "Core Competency: Persistence", testJob4.toString());
         // If a Job object ONLY contains data for the id field, the method should return,
         // “OOPS! This job does not seem to exist.”
-        //assertEquals("OOPS! This job does not seem to exist.", testJob1.toString());
+        assertEquals("OOPS! This job does not seem to exist.", testJob1.toString());
     }
-
 }
