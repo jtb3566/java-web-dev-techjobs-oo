@@ -35,16 +35,14 @@ public class Job {
 
     @Override
     public String toString() {
-        boolean allNull = Stream.of(name, employer, location, positionType, coreCompetency).allMatch(Objects::isNull);
-
-        return allNull ? "OOPS! This job does not seem to exist." :
-         "\n" +
-                    "ID: " + id + "\n" +
-                    "Name: " + (name == null ? "Data not available" : name) + "\n" +
-                    "Employer: " + (employer.getValue() == null ? "Data not available" : employer.getValue()) + "\n" +
-                    "Location: " + (location.getValue() == null ? "Data not available" : location.getValue()) + "\n" +
-                    "Position Type: " + (positionType.getValue() == null ? "Data not available" : positionType.getValue()) + "\n" +
-                    "Core Competency: " + (coreCompetency.getValue() == null ? "Data not available" : coreCompetency.getValue());
+        return Stream.of(name, employer, location, positionType, coreCompetency).allMatch(Objects::isNull) ?
+            "OOPS! This job does not seem to exist." :
+                "\n" + "ID: " + id +
+                "\n" + "Name: " + (name == null ? "Data not available" : name) +
+                "\n" + "Employer: " + (employer.getValue() == null ? "Data not available" : employer.getValue()) +
+                "\n" + "Location: " + (location.getValue() == null ? "Data not available" : location.getValue()) +
+                "\n" + "Position Type: " + (positionType.getValue() == null ? "Data not available" : positionType.getValue()) +
+                "\n" + "Core Competency: " + (coreCompetency.getValue() == null ? "Data not available" : coreCompetency.getValue());
     }
 
     //  Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
